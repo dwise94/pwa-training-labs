@@ -106,6 +106,10 @@ function headRequest() {
     method: 'HEAD'
   })
   .then(validateResponse)
+  .then(function(response){
+    console.log(response.headers.get('content-length'))
+    return response;
+  })
   .then(readResponseAsText)
   .then(logResult)
   .catch(logError)
